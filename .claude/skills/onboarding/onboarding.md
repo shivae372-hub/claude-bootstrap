@@ -60,7 +60,7 @@ Ask these questions ONE AT A TIME. Wait for the answer before asking the next.
 After collecting answers, run the project detection script:
 
 ```bash
-python3 .claude/skills/onboarding/scripts/detect-project.py --output /tmp/detected.json
+python3 .claude/skills/onboarding/scripts/detect-project.py --target . --output /tmp/detected.json
 ```
 
 If the script fails or doesn't exist, set detected = `{"has_project": false}`.
