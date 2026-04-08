@@ -1,0 +1,50 @@
+# OS
+.DS_Store
+Thumbs.db
+
+# Editor
+.vscode/
+.idea/
+*.swp
+*.swo
+
+# Bootstrap runtime artifacts (generated during bootstrap, not committed here)
+USER_PROFILE.json
+detected.json
+
+# Python
+__pycache__/
+*.pyc
+*.pyo
+
+# Personal notes / brainstorms (not for public repo)
+prompt.txt
+
+# Local Claude settings (machine-specific)
+.claude/settings.local.json
+
+# Session state (runtime only)
+SESSION_STATE.md
+
+# Temp directories and detection output
+/tmp/
+/tmp/detected.json
+temp/
+*.tmp
+
+# Private keys and certificates
+*.key
+*.pem
+*.p12
+*.pfx
+
+# Environment files with secrets
+.env
+.env.local
+.env.*.local
+
+# Node
+node_modules/
+
+# Logs
+*.log
