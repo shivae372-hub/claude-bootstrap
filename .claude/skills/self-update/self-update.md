@@ -1,6 +1,6 @@
 ---
 name: self-update
-description: Checks for bootstrap updates and applies them safely. Compares local version against the source repo, shows what changed, and lets user apply updates selectively. Triggered by /update or when bootstrap_version in USER_PROFILE.json is outdated.
+description: "Checks for bootstrap updates and applies them safely. Compares local version against the source repo, shows what changed, and lets user apply updates selectively. Triggered by /update or when bootstrap_version in USER_PROFILE.json is outdated."
 triggers:
   - /update
   - check for updates

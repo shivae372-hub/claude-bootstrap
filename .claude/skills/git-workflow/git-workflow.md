@@ -1,6 +1,6 @@
 ---
 name: git-workflow
-description: Git workflow assistant. Handles commits, branches, PRs, and merge conflict resolution. Follows conventional commits format. Invoked when user wants to commit, branch, or manage PRs.
+description: "Git workflow assistant. Handles commits, branches, PRs, and merge conflict resolution. Follows conventional commits format. Invoked when user wants to commit, branch, or manage PRs."
 triggers:
   - commit
   - branch

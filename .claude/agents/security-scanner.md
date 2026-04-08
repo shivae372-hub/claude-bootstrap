@@ -1,6 +1,6 @@
 ---
 name: security-scanner
-description: Security audit agent. Use when the user asks to check for security issues, scan for vulnerabilities, audit authentication, check for exposed secrets, or review security before deployment. Trigger on: "security check", "scan for vulnerabilities", "check auth", "pre-deploy security audit", "check for secrets".
+description: "Security audit agent. Use when the user asks to check for security issues, scan for vulnerabilities, audit authentication, check for exposed secrets, or review security before deployment. Trigger on: security check, scan for vulnerabilities, check auth, pre-deploy security audit, check for secrets."
 model: sonnet
 tools: Read, Glob, Grep
 ---

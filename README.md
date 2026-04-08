@@ -177,6 +177,26 @@ Adding a new agent template:
 1. Create `docs/templates/agents/<name>.md` with YAML frontmatter
 2. Reference it in the appropriate tier's `agents.md`
 
+## Roadmap
+
+This repo is the first piece of a larger vision — making Claude the most powerful coding partner ever built.
+
+**Coming next:**
+
+- **claude-cowork** — Real-time multiplayer Claude sessions. Multiple people, one Claude, shared context. Like pair programming but with AI as the third wheel that actually helps.
+- **claude-memory-pro** — Persistent long-term memory across sessions, projects, and teams. Claude that remembers everything you've ever shipped.
+- **claude-review-bot** — GitHub App that auto-reviews every PR using your codebase's own conventions, not generic rules.
+- **claude-standup** — Daily async standups powered by Claude. Reads your commits, writes the update, sends it to Slack.
+- **claude-onboard** — Drop a new developer into any codebase in under an hour. Claude generates a guided tour, architecture walkthrough, and first-ticket suggestions.
+- **stack-packs** — Pre-built bootstrap configs for every major stack (Supabase, Convex, PlanetScale, Railway, Fly.io, AWS, GCP) — one command to go from zero to fully Claude-optimised.
+- **claude-incident** — On-call Claude. Reads your runbooks, traces the logs, suggests the fix, writes the postmortem.
+
+The goal: when someone thinks "I need Claude to help me build this" — this repo is where they start.
+
+Star the repo to follow along. PRs welcome.
+
+---
+
 ## License
 
 Apache 2.0 — See [LICENSE](LICENSE) for details.

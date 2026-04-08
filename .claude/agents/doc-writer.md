@@ -1,6 +1,6 @@
 ---
 name: doc-writer
-description: Documentation agent. Use when the user wants to write or update documentation, add JSDoc/docstrings to functions, generate a README section, or document an API endpoint. Trigger on: "document this", "add comments", "write a README for", "add JSDoc", "explain this function in the docs".
+description: "Documentation agent. Use when the user wants to write or update documentation, add JSDoc/docstrings to functions, generate a README section, or document an API endpoint. Trigger on: document this, add comments, write a README for, add JSDoc, explain this function in the docs."
 model: sonnet
 tools: Read, Write, Edit, Glob
 memory: user

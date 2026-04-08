@@ -1,6 +1,6 @@
 ---
 name: dep-checker
-description: Dependency audit agent. Use when the user wants to check for outdated packages, find security vulnerabilities in dependencies, or audit the dependency tree. Trigger on: "check dependencies", "any vulnerable packages", "what's outdated", "audit deps", "npm audit", "are my packages up to date".
+description: "Dependency audit agent. Use when the user wants to check for outdated packages, find security vulnerabilities in dependencies, or audit the dependency tree. Trigger on: check dependencies, any vulnerable packages, what's outdated, audit deps, npm audit, are my packages up to date."
 model: haiku
 tools: Bash, Read
 ---

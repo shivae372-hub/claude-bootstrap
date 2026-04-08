@@ -1,6 +1,6 @@
 ---
 name: code-reviewer
-description: Code review agent. Use when the user asks to review code, check a diff, inspect recent changes, look for bugs, or validate a pull request. Trigger on: "review this", "check my code", "look for bugs", "inspect the diff", "review before I commit".
+description: "Code review agent. Use when the user asks to review code, check a diff, inspect recent changes, look for bugs, or validate a pull request. Trigger on: review this, check my code, look for bugs, inspect the diff, review before I commit."
 model: sonnet
 tools: Read, Glob, Grep, Bash
 memory: user

@@ -1,6 +1,6 @@
 ---
 name: context-guard
-description: Monitors context window usage and warns when approaching limits. Auto-activates when conversation is getting long or user mentions context/tokens. Suggests compaction strategies.
+description: "Monitors context window usage and warns when approaching limits. Auto-activates when conversation is getting long or user mentions context/tokens. Suggests compaction strategies."
 triggers:
   - context window
   - running out of tokens

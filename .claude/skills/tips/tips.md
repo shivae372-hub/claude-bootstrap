@@ -1,6 +1,6 @@
 ---
 name: tips
-description: Surfaces contextual tips from docs/tips.json based on user's tech level and current activity. Invoked by analyze-repo, or manually with /tips. Teaches users how to get more from Claude Code.
+description: "Surfaces contextual tips from docs/tips.json based on user's tech level and current activity. Invoked by analyze-repo, or manually with /tips. Teaches users how to get more from Claude Code."
 triggers:
   - /tips
   - show me tips

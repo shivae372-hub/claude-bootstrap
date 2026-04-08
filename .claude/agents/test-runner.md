@@ -1,6 +1,6 @@
 ---
 name: test-runner
-description: Test execution agent. Use when the user wants to run tests, check if tests pass, debug test failures, or verify a change didn't break anything. Trigger on: "run tests", "do tests pass", "check if this broke anything", "run the test suite", "why is this test failing".
+description: "Test execution agent. Use when the user wants to run tests, check if tests pass, debug test failures, or verify a change didn't break anything. Trigger on: run tests, do tests pass, check if this broke anything, run the test suite, why is this test failing."
 model: haiku
 tools: Bash, Read, Glob
 ---

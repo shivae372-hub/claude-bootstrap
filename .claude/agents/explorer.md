@@ -1,6 +1,6 @@
 ---
 name: explorer
-description: Read-only codebase exploration agent. Use when you need to search files, understand project structure, find where code lives, or build context about the codebase. Runs in an isolated context window to keep the main session clean. Trigger on: "find where X is defined", "how does Y work", "what files handle Z", "explore the codebase", "search for".
+description: "Read-only codebase exploration agent. Use when you need to search files, understand project structure, find where code lives, or build context about the codebase. Runs in an isolated context window to keep the main session clean. Trigger on: find where X is defined, how does Y work, what files handle Z, explore the codebase, search for."
 model: haiku
 tools: Read, Glob, Grep, LS
 memory: user

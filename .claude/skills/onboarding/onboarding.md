@@ -1,6 +1,6 @@
 ---
 name: onboarding
-description: First-run user onboarding. Asks 6 questions, detects project, writes USER_PROFILE.json, then routes to the right bootstrap template.
+description: "First-run user onboarding. Asks 6 questions, detects project, writes USER_PROFILE.json, then routes to the right bootstrap template."
 triggers:
   - "first time"
   - "new user"
