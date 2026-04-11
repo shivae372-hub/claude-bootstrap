@@ -55,7 +55,7 @@ Shell scripts in `.claude/hooks/` that solve real problems. Good candidates:
 ```bash
 # Clone into a test project
 cd my-test-project
-git clone https://github.com/YOUR_USERNAME/claude-bootstrap.git
+git clone https://github.com/shivae372-hub/claude-bootstrap.git
 
 # Run bootstrap
 bash claude-bootstrap/scripts/bootstrap.sh

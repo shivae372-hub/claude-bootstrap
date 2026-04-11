@@ -48,3 +48,38 @@ node_modules/
 
 # Logs
 *.log
+
+# Additional files to exclude from public repo
+# Documentation and planning files (not needed for build)
+docs/superpowers/
+docs/tips.json
+
+# Test and development artifacts
+*.test
+*.spec
+coverage/
+.nyc_output/
+
+# Build artifacts that shouldn't be committed
+dist/
+build/
+out/
+*.tgz
+*.tar.gz
+
+# Cache directories
+.cache/
+.parcel-cache/
+
+# IDE specific files
+*.sublime-project
+*.sublime-workspace
+
+# Backup files
+*.bak
+*.backup
+*.old
+
+# Temporary user files
+USER_PROFILE.*.json
+*.user.json
