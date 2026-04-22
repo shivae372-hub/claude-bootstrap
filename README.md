@@ -2,7 +2,7 @@
 
 > Generate a professional Claude Code setup for any project in minutes.
 
-Claude Code is powerful — but most users are losing 60% of its value to poor configuration, token waste, and generic prompts.
+Claude Code is powerful — but most users lose 60% of its value to poor configuration, token waste, and generic prompts.
 
 `claude-bootstrap` reads your project and generates a fully custom Claude Code setup: sub-agents, skills, hooks, CLAUDE.md, and session continuity — tailored to your exact stack and how you work.
 
@@ -16,15 +16,49 @@ Claude Code is powerful — but most users are losing 60% of its value to poor c
 | **Hooks** | Shell scripts that auto-format, block dangerous commands, and checkpoint sessions |
 | **SESSION_STATE.md** | Session continuity — Claude resumes exactly where you left off |
 
+## Prerequisites
+
+| Requirement | How to install |
+|-------------|---------------|
+| **Claude Code** | [claude.ai/code](https://claude.ai/code) |
+| **Python 3.8+** | [python.org](https://www.python.org/downloads/) — already installed on macOS/Linux; use the installer or `winget install Python.Python.3` on Windows |
+| **Git** | [git-scm.com](https://git-scm.com/downloads) |
+| **Bash** | Built-in on macOS/Linux. On Windows: use [Git Bash](https://git-scm.com/downloads) (included with Git) or WSL |
+
 ## Quick Start
 
 ```bash
-# From your project root:
-git clone https://github.com/shivae372-hub/claude-bootstrap
+# From your project root (use Git Bash on Windows):
+git clone https://github.com/shivae370/claude-bootstrap
 bash claude-bootstrap/scripts/bootstrap.sh
 ```
 
 That's it. The script detects your stack, asks 6 quick questions, and generates everything.
+
+### Windows Users
+
+If you're on Windows, use one of these options:
+
+**Option A — Git Bash** (recommended, no setup needed):
+```bash
+# Open Git Bash, then navigate to your project:
+cd /c/Users/YourName/your-project
+git clone https://github.com/shivae370/claude-bootstrap
+bash claude-bootstrap/scripts/bootstrap.sh
+```
+
+**Option B — WSL (Windows Subsystem for Linux)**:
+```bash
+# Inside your WSL terminal:
+git clone https://github.com/shivae370/claude-bootstrap
+bash claude-bootstrap/scripts/bootstrap.sh
+```
+
+**Option C — Run detection only (no bash needed)**:
+```bash
+# Detect your stack using Python directly:
+python claude-bootstrap/.claude/skills/onboarding/scripts/detect-project.py --target .
+```
 
 ## Who This Is For
 
@@ -135,7 +169,6 @@ claude-bootstrap/
 │   └── format.sh                      # Multi-language code formatter
 ├── docs/
 │   ├── FORMATS.md                     # File format specifications
-│   ├── tips.json                      # 30 contextual tips
 │   ├── stacks/                        # Stack-specific configurations
 │   │   ├── nextjs.md
 │   │   ├── python.md
@@ -163,7 +196,11 @@ claude-bootstrap/
     │   ├── test-runner/               # Test suite runner
     │   └── tips/                      # Contextual tips
     └── hooks/
-        └── checkpoint.sh              # Session state + drift detection
+        ├── checkpoint.sh              # Session state + drift detection
+        ├── format.sh                  # Auto-formatter
+        ├── notify.sh                  # Desktop notifications
+        ├── safety-check.sh            # Blocks dangerous commands
+        └── secret-detector.sh         # Blocks writing credentials
 ```
 
 ## Contributing
@@ -177,21 +214,21 @@ Adding a new agent template:
 1. Create `docs/templates/agents/<name>.md` with YAML frontmatter
 2. Reference it in the appropriate tier's `agents.md`
 
+See [CONTRIBUTING.md](CONTRIBUTING.md) for full guidelines.
+
 ## Roadmap
 
 This repo is the first piece of a larger vision — making Claude the most powerful coding partner ever built.
 
 **Coming next:**
 
-- **claude-cowork** — Real-time multiplayer Claude sessions. Multiple people, one Claude, shared context. Like pair programming but with AI as the third wheel that actually helps.
-- **claude-memory-pro** — Persistent long-term memory across sessions, projects, and teams. Claude that remembers everything you've ever shipped.
-- **claude-review-bot** — GitHub App that auto-reviews every PR using your codebase's own conventions, not generic rules.
-- **claude-standup** — Daily async standups powered by Claude. Reads your commits, writes the update, sends it to Slack.
-- **claude-onboard** — Drop a new developer into any codebase in under an hour. Claude generates a guided tour, architecture walkthrough, and first-ticket suggestions.
-- **stack-packs** — Pre-built bootstrap configs for every major stack (Supabase, Convex, PlanetScale, Railway, Fly.io, AWS, GCP) — one command to go from zero to fully Claude-optimised.
-- **claude-incident** — On-call Claude. Reads your runbooks, traces the logs, suggests the fix, writes the postmortem.
-
-The goal: when someone thinks "I need Claude to help me build this" — this repo is where they start.
+- **claude-cowork** — Real-time multiplayer Claude sessions. Multiple people, one Claude, shared context.
+- **claude-memory-pro** — Persistent long-term memory across sessions, projects, and teams.
+- **claude-review-bot** — GitHub App that auto-reviews every PR using your codebase's own conventions.
+- **claude-standup** — Daily async standups powered by Claude. Reads your commits, writes the update.
+- **claude-onboard** — Drop a new developer into any codebase in under an hour.
+- **stack-packs** — Pre-built bootstrap configs for every major stack (Supabase, Convex, Railway, Fly.io, AWS).
+- **claude-incident** — On-call Claude. Reads your runbooks, traces the logs, suggests the fix.
 
 Star the repo to follow along. PRs welcome.
 

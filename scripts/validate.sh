@@ -4,8 +4,6 @@
 # Run from your project root: bash scripts/validate.sh
 # Or Claude calls this automatically at the end of Step 4.
 
-set -e
-
 ERRORS=0
 WARNINGS=0
 PASS=0

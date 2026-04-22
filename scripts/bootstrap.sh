@@ -38,7 +38,7 @@ echo ""
 # ─── Check for Claude Code ──────────────────────────────────────
 if ! command -v claude &> /dev/null; then
   echo -e "${RED}Error: Claude Code is not installed.${NC}"
-  echo "Install it: https://code.claude.com"
+  echo "Install it: https://claude.ai/code"
   exit 1
 fi
 

@@ -6,12 +6,10 @@ This is a community project. The goal is to build the best possible automatic Cl
 
 ### Stack Templates
 The highest-value contributions are stack-specific templates in `docs/stacks/`. Current gaps:
-- `go.md` — Go projects
-- `rust.md` — Rust/Cargo projects
-- `ruby.md` — Rails projects
-- `java.md` — Spring Boot projects
 - `flutter.md` — Flutter/Dart projects
-- `monorepo.md` — Turborepo/Nx monorepos
+- `elixir.md` — Phoenix/Elixir projects
+- `dotnet.md` — .NET/C# projects
+- `swift.md` — Swift/iOS projects
 
 ### Improved Agents
 If you've found a better system prompt for an existing agent, submit a PR. Include:
@@ -55,11 +53,11 @@ Shell scripts in `.claude/hooks/` that solve real problems. Good candidates:
 ```bash
 # Clone into a test project
 cd my-test-project
-git clone https://github.com/shivae372-hub/claude-bootstrap.git
+git clone https://github.com/shivae370/claude-bootstrap.git
 
 # Run bootstrap
 bash claude-bootstrap/scripts/bootstrap.sh
 
 # Validate output
-bash scripts/validate.sh
+bash claude-bootstrap/scripts/validate.sh
 ```

@@ -1,60 +1,60 @@
 #!/bin/bash
 # checkpoint.sh
-# Post-tool-use hook: updates SESSION_STATE.md after significant actions.
+# PreCompact hook: saves session state before context compaction.
 # Also detects CLAUDE.md drift (file growing too long).
-#
-# Called by Claude Code after each tool use:
-#   $1 = tool name (Write, Edit, Bash, etc.)
-#   $2 = file path (for Write/Edit) or command (for Bash)
+# Receives JSON on stdin per the Claude Code hook contract.
 
-TOOL="$1"
-FILE="$2"
+INPUT=$(cat)
+
+TOOL=$(echo "$INPUT" | python3 -c "
+import sys, json
+d = json.load(sys.stdin)
+print(d.get('tool_name', ''))
+" 2>/dev/null)
+
+FILE=$(echo "$INPUT" | python3 -c "
+import sys, json
+d = json.load(sys.stdin)
+inp = d.get('tool_input', {})
+print(inp.get('file_path', inp.get('path', '')))
+" 2>/dev/null)
 
 # ─── Only act on write operations ────────────────────────────────
-if [ "$TOOL" != "Write" ] && [ "$TOOL" != "Edit" ]; then
+if [ "$TOOL" != "Write" ] && [ "$TOOL" != "Edit" ] && [ "$TOOL" != "str_replace_based_edit_tool" ]; then
   exit 0
 fi
 
 # ─── Update SESSION_STATE.md timestamp ───────────────────────────
 if [ -f "SESSION_STATE.md" ]; then
-  # Update the last-modified timestamp (works on both Linux and macOS)
+  TIMESTAMP=$(date -u +%Y-%m-%dT%H:%M:%SZ)
   if sed --version 2>/dev/null | grep -q GNU; then
-    # GNU sed (Linux)
-    sed -i "s/^Last updated:.*/Last updated: $(date -u +%Y-%m-%dT%H:%M:%SZ)/" SESSION_STATE.md 2>/dev/null || true
+    sed -i "s/^## Last updated:.*/## Last updated: $TIMESTAMP/" SESSION_STATE.md 2>/dev/null || true
   else
-    # BSD sed (macOS) — requires empty string after -i
-    sed -i '' "s/^Last updated:.*/Last updated: $(date -u +%Y-%m-%dT%H:%M:%SZ)/" SESSION_STATE.md 2>/dev/null || true
+    sed -i '' "s/^## Last updated:.*/## Last updated: $TIMESTAMP/" SESSION_STATE.md 2>/dev/null || true
   fi
 fi
 
 # ─── CLAUDE.md drift detection ───────────────────────────────────
 if [ -f "CLAUDE.md" ]; then
   LINE_COUNT=$(wc -l < "CLAUDE.md")
-
   if [ "$LINE_COUNT" -gt 150 ]; then
     echo ""
-    echo "⚠  CLAUDE.md DRIFT DETECTED"
-    echo "   CLAUDE.md is now $LINE_COUNT lines (limit: 150)"
-    echo "   Claude's attention degrades past 150 lines."
-    echo "   Run: /trim-claude-md to compact it"
+    echo "WARNING: CLAUDE.md DRIFT DETECTED"
+    echo "  CLAUDE.md is now $LINE_COUNT lines (limit: 150)"
+    echo "  Claude's attention degrades past 150 lines."
+    echo "  Consider running: /trim-claude-md"
     echo ""
   fi
 fi
 
 # ─── Track modified files in SESSION_STATE.md ────────────────────
 if [ -n "$FILE" ] && [ -f "SESSION_STATE.md" ] && [ -f "$FILE" ]; then
-  # Add to modified files list if not already there
-  # Only track files in the project (not /tmp or system files)
   if [[ "$FILE" != /tmp/* ]] && [[ "$FILE" != /var/* ]]; then
     BASENAME=$(basename "$FILE")
-
-    # Check if Files Modified section exists
     if grep -q "^## Files Modified" SESSION_STATE.md 2>/dev/null; then
-      # Check if this file is already listed
-      if ! grep -q "^\- $BASENAME" SESSION_STATE.md 2>/dev/null; then
-        # Append to the section (simple approach: add after the header)
+      if ! grep -q "^- $BASENAME" SESSION_STATE.md 2>/dev/null; then
         if sed --version 2>/dev/null | grep -q GNU; then
-          sed -i "/^## Files Modified/a\- $BASENAME" SESSION_STATE.md 2>/dev/null || true
+          sed -i "/^## Files Modified/a\\- $BASENAME" SESSION_STATE.md 2>/dev/null || true
         else
           sed -i '' "/^## Files Modified/a\\
 - $BASENAME" SESSION_STATE.md 2>/dev/null || true

@@ -22,7 +22,7 @@ BLOCKED_PATTERNS=(
   "DROP TABLE"
   "DROP DATABASE"
   "TRUNCATE TABLE"
-  "DELETE FROM.*WHERE.*1=1"
+  "DELETE FROM .* WHERE .* 1=1"
   "format c:"
   "dd if=/dev/zero"
   "> /dev/sda"
@@ -30,7 +30,7 @@ BLOCKED_PATTERNS=(
 )
 
 for pattern in "${BLOCKED_PATTERNS[@]}"; do
-  if echo "$COMMAND" | grep -qi "$pattern"; then
+  if echo "$COMMAND" | grep -qiE "$pattern"; then
     echo "🚫 BLOCKED: Dangerous command detected: '$pattern'"
     echo "If you genuinely need to run this, do it manually in your terminal."
     exit 2
@@ -47,7 +47,7 @@ WARNING_PATTERNS=(
 )
 
 for pattern in "${WARNING_PATTERNS[@]}"; do
-  if echo "$COMMAND" | grep -qi "$pattern"; then
+  if echo "$COMMAND" | grep -qiE "$pattern"; then
     echo "⚠️  WARNING: '$pattern' detected. Proceeding, but verify this is intentional."
     # Exit 0 — allow, but Claude sees the warning
     exit 0

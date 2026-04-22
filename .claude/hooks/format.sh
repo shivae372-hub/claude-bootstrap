@@ -10,8 +10,7 @@ FILEPATH=$(echo "$INPUT" | python3 -c "
 import sys, json
 d = json.load(sys.stdin)
 inp = d.get('tool_input', {})
-# Write tool uses 'file_path', Edit uses 'path'
-print(inp.get('file_path', inp.get('path', '')))
+print(inp.get('file_path', ''))
 " 2>/dev/null)
 
 if [ -z "$FILEPATH" ] || [ ! -f "$FILEPATH" ]; then
